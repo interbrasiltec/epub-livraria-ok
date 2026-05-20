@@ -814,8 +814,9 @@ export default function App() {
       console.log(`[Sync] Starting sync for: ${book.title}`);
       
       let data: any;
-      if (userApiKey) {
-        data = await callGeminiDirectly(book.title, book.author, book.isbn, book.fileName, userApiKey);
+      const activeApiKey = userApiKey || ((import.meta as any).env?.VITE_GEMINI_API_KEY as string) || "";
+      if (activeApiKey) {
+        data = await callGeminiDirectly(book.title, book.author, book.isbn, book.fileName, activeApiKey);
       } else {
         const resp = await fetch("/api/enrich", {
           method: "POST",
@@ -891,8 +892,9 @@ export default function App() {
     for (const book of booksToEnrich) {
       try {
         let data: any;
-        if (userApiKey) {
-          data = await callGeminiDirectly(book.title, book.author, book.isbn, book.fileName, userApiKey);
+        const activeApiKey = userApiKey || ((import.meta as any).env?.VITE_GEMINI_API_KEY as string) || "";
+        if (activeApiKey) {
+          data = await callGeminiDirectly(book.title, book.author, book.isbn, book.fileName, activeApiKey);
         } else {
           const resp = await fetch("/api/enrich", {
             method: "POST",

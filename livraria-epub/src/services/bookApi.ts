@@ -105,8 +105,14 @@ export async function callGeminiDirectly(
   author: string,
   isbn: string,
   fileName: string,
-  apiKey: string
+  apiKey?: string
 ): Promise<ApiBookResult> {
+  const activeKey = apiKey || ((import.meta as any).env?.VITE_GEMINI_API_KEY as string) || "";
+  
+  if (!activeKey) {
+    throw new Error("Chave de API do Gemini não fornecida. Configure a variável VITE_GEMINI_API_KEY no ambiente ou forneça uma chave ativa.");
+  }
+
   const prompt = `
     Você é um bibliotecário especialista em metadados de livros e crítico literário. 
     Encontre as informações corretas e detalhadas para o livro:
@@ -137,7 +143,7 @@ export async function callGeminiDirectly(
   `;
 
   const modelToUse = "gemini-2.0-flash";
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelToUse}:generateContent?key=${apiKey}`;
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelToUse}:generateContent?key=${activeKey}`;
 
   console.log(`[Browser Gemini] Requisitando modelo ${modelToUse} com CORS habilitado pelo browser...`);
 
