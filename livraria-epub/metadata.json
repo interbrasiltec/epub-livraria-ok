@@ -1,6 +1,0 @@
-{
-  "name": "Ebookpedia",
-  "description": "Ebookpedia é sua biblioteca inteligente de e-books. Organize, explore e descubra informações detalhadas dos seus livros digitais com ajuda de inteligência artificial.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
