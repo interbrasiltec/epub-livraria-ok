@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-main: #120e0a;          /* Rich cozy warm coffee black background */
+  --color-bg-sidebar-left: #1a1410;  /* Pure dark mahogany wood panel */
+  --color-bg-sidebar-right: #16110d; /* Middle warm cedar panel */
+  --color-bg-header: #16110d;        /* Warm wood header */
+  --color-accent-blue: #df9a44;      /* Radiant cozy warm amber / golden light */
+  --color-accent-blue-hover: #ebab5d;/* Shimmering brassy warm amber hover state */
+}
+
+@layer base {
+  body {
+    @apply bg-bg-main text-stone-200 antialiased overflow-hidden;
+    background-image: 
+      radial-gradient(circle at 50% -20%, rgba(223, 154, 68, 0.12) 0%, transparent 60%),
+      radial-gradient(circle at 10% 40%, rgba(223, 154, 68, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 90% 70%, rgba(223, 154, 68, 0.04) 0%, transparent 40%),
+      linear-gradient(to right, rgba(0, 0, 0, 0.2) 0%, transparent 15%, transparent 85%, rgba(0, 0, 0, 0.2) 100%);
+    background-attachment: fixed;
+  }
+}
+
+@layer utilities {
+  .safe-pb {
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* Cozy lighting overlays */
+  .shelf-backlight {
+    background-image: linear-gradient(180deg, rgba(223, 154, 68, 0.08) 0%, rgba(223, 154, 68, 0.02) 40%, transparent 100%);
+  }
+  
+  .warm-spotlight {
+    background: radial-gradient(ellipse at center, rgba(223, 154, 68, 0.12) 0%, rgba(18, 14, 10, 0) 75%);
+  }
+
+  /* Fine luxury wood patterns and panels */
+  .mahogany-grain {
+    background: linear-gradient(135deg, #18110b 0%, #0e0a07 100%);
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.6);
+  }
+
+  /* Extremely realistic vertical wooden plank backboard */
+  .wood-planks-vertical {
+    background-color: #0d0906;
+    background-image: 
+      /* Vertical board joint shadows/gaps */
+      repeating-linear-gradient(90deg, 
+        transparent 0px, 
+        transparent 84px, 
+        rgba(0, 0, 0, 0.75) 84px, 
+        rgba(0, 0, 0, 0.75) 86px, 
+        rgba(223, 154, 68, 0.03) 86px, 
+        rgba(223, 154, 68, 0.03) 87px, 
+        transparent 87px
+      ),
+      /* Microscopic fine cedar/mahogany fibers wood grain */
+      repeating-linear-gradient(0deg, 
+        rgba(15, 10, 6, 0.15) 0px, 
+        rgba(15, 10, 6, 0.15) 1px, 
+        transparent 1px, 
+        transparent 4px
+      ),
+      /* Broad planks subtle darkness variation */
+      repeating-linear-gradient(90deg, 
+        rgba(0, 0, 0, 0.22) 0px, 
+        transparent 44px, 
+        rgba(223, 154, 68, 0.015) 87px
+      );
+    box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.85);
+  }
+
+  /* Spotlighting beam effect emitted down shelves */
+  .shelf-spotlight-beam {
+    background: radial-gradient(ellipse at top, rgba(223, 154, 68, 0.28) 0%, rgba(223, 154, 68, 0.08) 25%, transparent 65%);
+  }
+}
+
+@layer components {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-amber-950/40 rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-accent-blue/30;
+  }
+}
