@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "epub-livraria-ok",
+  "compatibility_date": "2026-05-19",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": "livraria-epub"
+  },
+  "compatibility_flags": [
+    "nodejs_compat"
+  ]
+}
